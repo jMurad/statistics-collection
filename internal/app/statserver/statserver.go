@@ -49,10 +49,31 @@ func (s *StatServer) configureLogger() error {
 
 func (s *StatServer) configureRouter() {
 	s.router.HandleFunc("/get-order-book", s.GetOrderBook())
+	s.router.HandleFunc("/save-order-book", s.SaveOrderBook())
+	s.router.HandleFunc("/get-order-history", s.GetOrderHistory())
+	s.router.HandleFunc("/save-order", s.SaveOrder())
 }
 
 func (s *StatServer) GetOrderBook() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		io.WriteString(w, "get_order_book")
+	}
+}
+
+func (s *StatServer) SaveOrderBook() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		io.WriteString(w, "save_order_book")
+	}
+}
+
+func (s *StatServer) GetOrderHistory() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		io.WriteString(w, "get_order_history")
+	}
+}
+
+func (s *StatServer) SaveOrder() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		io.WriteString(w, "save_order")
 	}
 }

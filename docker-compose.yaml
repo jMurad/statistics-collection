@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  clickhouse-db:
+    image: clickhouse/clickhouse-server:latest
+    environment:
+      CLICKHOUSE_USER: admin
+      CLICKHOUSE_PASSWORD: adm111
+
+    ports:
+      - "18123:8123"
+      - "19000:9000"
